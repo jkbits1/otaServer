@@ -1,0 +1,19 @@
+{
+  "name": "basic-express",
+  "version": "0.0.001",
+  "description": "basic express server",
+  "main": "basicServer.js",
+  "scripts": {
+    "start": "nodemon basicServer.js | bunyan",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jkbits1",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.4.0",
+    "ejs": "^2.3.3",
+    "express": "^4.13.3",
+    "jade": "^1.11.0",
+    "morgan": "^1.6.1"
+  }
+}
