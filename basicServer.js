@@ -56,6 +56,20 @@ app.get('/', function (req, res) {
   log.info({res: res}, 'home rendered');
 });
 
+//app.get('/import/:file',
+app.get('/mainArticle',
+  getMainArticle
+);
+
+function getMainArticle (req, res) {
+
+  console.error("folders db requested");
+
+     //console.error("folders db - sending");
+
+  res.send("blather");
+}
+
 app.get('/noRender', function (req, res) {
 
   log.info({req: req}, '/');
