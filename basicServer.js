@@ -1,4 +1,7 @@
 var express = require('express');
+var favicon = require('serve-favicon');
+var bodyParser = require('body-parser');
+
 var ejs = require('ejs');
 var path = require('path');
 
@@ -21,6 +24,12 @@ log.info({}, 'log started');
 
 log.info({port: PORT}, 'server port');
 log.info({dirname: __dirname}, '__dirname');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use('/app', express.static(__dirname + '/public'));
+
 
 // set up path to web pages
 app.set('views', path.join(__dirname, 'views'));
