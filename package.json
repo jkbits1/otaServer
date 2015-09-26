@@ -5,7 +5,8 @@
   "main": "basicServer.js",
   "scripts": {
     "start": "node basicServer.js | bunyan",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
   },
   "author": "jkbits1",
   "license": "ISC",
