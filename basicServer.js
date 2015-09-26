@@ -58,27 +58,29 @@ app.get('/', function (req, res) {
   log.info({res: res}, 'home rendered');
 });
 
-//app.get('/import/:file',
-app.get('/mainArticle',
-  getMainArticle
-);
-
-function getMainArticle (req, res) {
-
-  console.error("folders db requested");
-
-     //console.error("folders db - sending");
-
-  articleSearch(req, res, "europe%20debate");
-
-  //res.send("blather");
-}
+//function getMainArticle (req, res) {
+//  console.error("folders db requested");
+//
+//  articleSearch(req, res, "europe%20debate");
+//}
 
 function articleSearch (req, res, searchTerm) {
   var searchParam = "&q=" + searchTerm;
+
+  articleSearchBasic(req, res, searchParam);
+}
+
+function articleSearchPublication (req, res, searchTerm, publicationNum) {
+  var searchParam = "&q=" + searchTerm;
+  var publication = "&sources[]=" + publicationNum;
+
+  articleSearchBasic(req, res, publication + searchParam);
+}
+
+function articleSearchBasic (req, res, params) {
   var url = "http://data.bbc.co.uk/bbcrd-juicer/articles?apikey=AlRI0N7WGKM1gH7xVcmiAV2a5TDx5ys2";
 
-  url += searchParam;
+  url += params;
 
   http.get(url, function(response) {
     console.log("Got response: " + res.statusCode);
@@ -98,10 +100,21 @@ function articleSearch (req, res, searchTerm) {
   });
 }
 
+//app.get('/mainArticle',
+//  getMainArticle
+//);
+
 app.get('/mainArticleSearch/:searchTerm', function (req, res) {
   var searchTerm = req.params.searchTerm;
 
   articleSearch(req, res, searchTerm);
+});
+
+app.get('/mainArticleSearch/:searchTerm/:publication', function (req, res) {
+  var searchTerm = req.params.searchTerm;
+  var publication = req.params.publication;
+
+  articleSearchPublication(req, res, searchTerm, publication);
 });
 
 app.get('/noRender', function (req, res) {
