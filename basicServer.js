@@ -99,14 +99,9 @@ function articleSearch (req, res, searchTerm) {
 }
 
 app.get('/mainArticleSearch/:searchTerm', function (req, res) {
-  //exec = child_proc.exec;
-
   var searchTerm = req.params.searchTerm;
 
-  //res.send("test456");
-
   articleSearch(req, res, searchTerm);
-
 });
 
 app.get('/noRender', function (req, res) {

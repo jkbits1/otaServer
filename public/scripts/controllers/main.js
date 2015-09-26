@@ -19,37 +19,11 @@ angular.module('otaClientApp')
     $scope.searchTerm = "europe debate";
     $scope.articleDescriptions = [];
 
-    $http.get('/mainArticle')
-      .success(function (data, status, headers, config) {
-        var max = 5;
-        var current = 0;
+    $scope.searchJuicer = searchJuicer;
 
-        data.forEach(function (val) {
-          console.log(val);
+    searchJuicer();
 
-          if (current < max) {
-            if (val.body) {
-              $scope.articleDescriptions.push(val.description);
-              current++;
-            }
-            else {
-              console.log("article has no body");
-            }
-          }
-        });
-
-        //$scope.blather2 = data[0];
-
-        $scope.title = data[0].title;
-        $scope.body = data[0].body;
-
-      }).error(function(data, status, headers, config) {
-
-      });
-
-    //$scope.blather = "test123";
-
-    $scope.searchJuicer = function () {
+    function searchJuicer() {
       var encodedSearchTerm = encodeURIComponent($scope.searchTerm);
 
       $http.get('/mainArticleSearch/' + encodedSearchTerm)
@@ -66,12 +40,18 @@ angular.module('otaClientApp')
             console.log(val);
 
             if (current < max) {
-              $scope.articleDescriptions.push(val.description);
-              current++;
+              if (val.body) {
+                $scope.articleDescriptions.push(val.description);
+                current++;
+              }
+              else {
+                console.log("article has no body");
+              }
             }
           });
 
-          //$scope.blather2 = data[0];
+          $scope.title = data[0].title;
+          $scope.body = data[0].body;
 
         }).error(function(data, status, headers, config) {
       });
