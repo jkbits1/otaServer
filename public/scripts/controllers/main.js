@@ -19,8 +19,17 @@ angular.module('otaClientApp')
     $http.get('/mainArticle')
       .success(function (data, status, headers, config) {
 
+        //var parsed = JSON.parse(data);
+
+        //parsed.forEach(function (val) {
+        data.forEach(function (val) {
+          console.log(val);
+        });
+
         //$scope.blather2 = data.files;
-        $scope.blather2 = data;
+        //$scope.blather2 = data;
+        //$scope.blather2 = parsed;
+        $scope.blather2 = data[0];
 
         //var monthYears = [];
 

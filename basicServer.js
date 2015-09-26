@@ -1,3 +1,5 @@
+var http = require('http');
+
 var express = require('express');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
@@ -67,7 +69,30 @@ function getMainArticle (req, res) {
 
      //console.error("folders db - sending");
 
-  res.send("blather");
+  var url = "http://data.bbc.co.uk/bbcrd-juicer/articles?apikey=AlRI0N7WGKM1gH7xVcmiAV2a5TDx5ys2&q=europe%20debate";
+
+  http.get(url, function(response) {
+      console.log("Got response: " + res.statusCode);
+
+      var body = '';
+      response.on('data', function(d) {
+        body += d;
+      });
+      response.on('end', function () {
+        var parsed = JSON.parse(body);
+
+        //var json = JSON.stringify(body.hits);
+        var json = JSON.stringify(parsed.hits);
+
+        res.send(json);
+      });
+    }).on('error', function(e) {
+    console.log("Got error: " + e.message);
+  });
+
+
+
+  //res.send("blather");
 }
 
 app.get('/noRender', function (req, res) {
