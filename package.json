@@ -4,7 +4,7 @@
   "description": "basic express server",
   "main": "basicServer.js",
   "scripts": {
-    "start": "nodemon basicServer.js | bunyan",
+    "start": "node basicServer.js | bunyan",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jkbits1",
