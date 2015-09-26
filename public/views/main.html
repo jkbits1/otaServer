@@ -1,13 +1,43 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<!--<div class="jumbotron">-->
+  <!--<h1>'Allo, 'Allo!</h1>-->
+  <!--<p class="lead">-->
+    <!--<img src="images/yeoman.png" alt="I'm Yeoman"><br>-->
+    <!--Always a pleasure scaffolding your apps.-->
+  <!--</p>-->
+  <!--<p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>-->
+<!--</div>-->
+<h2>
+  My News Room
+</h2>
+<form>
+  <div class="form-group">
+    <label for="searchField"></label>
+    <!--<input type="text" id="csvFileName"/>-->
+    <!--<input type="file" id="csvFileName" onchange="angular.element(this).scope().uploadFile(this.files)"/>-->
+    <!--<input type="file" id="csvFileName2" onchange="uploadFile(this.files)"/>-->
+    <input type="text" id="searchField" ng-model="searchTerm" />
+  </div>
+  <div class="form-group">
+    <a class="btn btn-default" href=""
+       ng-click="searchJuicer()">Search</a>
+  </div>
+  <!--<div class="form-group">-->
+    <!--&lt;!&ndash;<a class="btn btn-default" href="#/segment">Segment Csv</a>&ndash;&gt;-->
+    <!--<a class="btn btn-default" ng-href="#/segment/{{csvFileName}}">Segment Csv</a>-->
+  <!--</div>-->
+</form>
 {{blather}}
 {{blather2}}
+
+<h3>
+  Top 5 articles
+</h3>
+<ul id="topFive">
+  <li class="articleDesc" ng-repeat="desc in articleDescriptions">
+    {{desc}}
+  </li>
+</ul>
+
 <div class="row marketing">
   <h4>HTML5 Boilerplate</h4>
   <p>

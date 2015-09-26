@@ -69,31 +69,45 @@ function getMainArticle (req, res) {
 
      //console.error("folders db - sending");
 
-  var url = "http://data.bbc.co.uk/bbcrd-juicer/articles?apikey=AlRI0N7WGKM1gH7xVcmiAV2a5TDx5ys2&q=europe%20debate";
-
-  http.get(url, function(response) {
-      console.log("Got response: " + res.statusCode);
-
-      var body = '';
-      response.on('data', function(d) {
-        body += d;
-      });
-      response.on('end', function () {
-        var parsed = JSON.parse(body);
-
-        //var json = JSON.stringify(body.hits);
-        var json = JSON.stringify(parsed.hits);
-
-        res.send(json);
-      });
-    }).on('error', function(e) {
-    console.log("Got error: " + e.message);
-  });
-
-
+  articleSearch(req, res, "europe%20debate");
 
   //res.send("blather");
 }
+
+function articleSearch (req, res, searchTerm) {
+  var searchParam = "&q=" + searchTerm;
+  var url = "http://data.bbc.co.uk/bbcrd-juicer/articles?apikey=AlRI0N7WGKM1gH7xVcmiAV2a5TDx5ys2";
+
+  url += searchParam;
+
+  http.get(url, function(response) {
+    console.log("Got response: " + res.statusCode);
+
+    var body = '';
+    response.on('data', function(d) {
+      body += d;
+    });
+    response.on('end', function () {
+      var parsed = JSON.parse(body);
+      var json = JSON.stringify(parsed.hits);
+
+      res.send(json);
+    });
+  }).on('error', function(e) {
+    console.log("Got error: " + e.message);
+  });
+}
+
+app.get('/mainArticleSearch/:searchTerm', function (req, res) {
+  //exec = child_proc.exec;
+
+  var searchTerm = req.params.searchTerm;
+
+  //res.send("test456");
+
+  articleSearch(req, res, searchTerm);
+
+});
 
 app.get('/noRender', function (req, res) {
 
