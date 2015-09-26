@@ -15,6 +15,15 @@ angular.module('otaClientApp')
       'Karma'
     ];
 
+    angular.element(document).ready(function () {
+      //console.log('Hello World');
+      $('#searchField').keypress(function (e) {
+        if (e.which == 13) {
+          populateJournals();
+        }
+      });
+    });
+
     //initial defaults
     $scope.searchTerm = "europe debate";
     $scope.articleDescriptions = [];
