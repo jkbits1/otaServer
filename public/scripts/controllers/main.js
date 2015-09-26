@@ -100,6 +100,11 @@ angular.module('otaClientApp')
               if (journalElems.sourceId === -1) {
                 $scope.articleDescriptions = [];
 
+                var mainImage = document.getElementById("mainImage");
+                mainImage.src = data[0].image;
+                mainImage.alt = data[0].title;
+
+
                 data.forEach(function (val) {
                   console.log(val);
 
