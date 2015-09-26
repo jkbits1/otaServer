@@ -1,11 +1,3 @@
-<!--<div class="jumbotron">-->
-  <!--<h1>'Allo, 'Allo!</h1>-->
-  <!--<p class="lead">-->
-    <!--<img src="images/yeoman.png" alt="I'm Yeoman"><br>-->
-    <!--Always a pleasure scaffolding your apps.-->
-  <!--</p>-->
-  <!--<p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>-->
-<!--</div>-->
 <div class="row">
   <h1>
     My News Room
@@ -16,19 +8,12 @@
   <form>
     <div class="form-group">
       <label for="searchField"></label>
-      <!--<input type="text" id="csvFileName"/>-->
-      <!--<input type="file" id="csvFileName" onchange="angular.element(this).scope().uploadFile(this.files)"/>-->
-      <!--<input type="file" id="csvFileName2" onchange="uploadFile(this.files)"/>-->
       <input type="text" id="searchField" ng-model="searchTerm" />
     </div>
     <div class="form-group">
       <a class="btn btn-default" href=""
          ng-click="searchJuicer()">Search</a>
     </div>
-    <!--<div class="form-group">-->
-      <!--&lt;!&ndash;<a class="btn btn-default" href="#/segment">Segment Csv</a>&ndash;&gt;-->
-      <!--<a class="btn btn-default" ng-href="#/segment/{{csvFileName}}">Segment Csv</a>-->
-    <!--</div>-->
   </form>
 </div>
 
@@ -52,34 +37,28 @@
 </div>
 
 <div class="row marketing">
-  <h4>Belgium Chronicle</h4>
+  <h3>Belgium Chronicle</h3>
   <p>
-    <h5>{{belgiumJournal.title}}</h5>
+    <h4><em>{{belgiumJournal.title}}
+        </em>
+    </h4>
     <p>{{belgiumJournal.body}}</p>
   </p>
 
-  <h4>French New</h4>
+  <h3>French News</h3>
   <p>
-  <h5>{{frenchJournal.title}}</h5>
+  <h4><em>{{frenchJournal.title}}
+      </em>
+  </h4>
   <p>{{frenchJournal.body}}</p>
   </p>
 
-  <h4>Portuguese Times</h4>
+  <h3>Portuguese Times</h3>
   <p>
-  <h5>{{portugueseJournal.title}}</h5>
+  <h4><em>{{portugueseJournal.title}}
+      </em>
+  </h4>
   <p>{{portugueseJournal.body}}</p>
   </p>
 
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
 </div>

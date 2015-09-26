@@ -56,7 +56,8 @@ angular.module('otaClientApp')
       };
 
       var frenchJournal = {
-        sourceId: 88,
+        //sourceId: 88,
+        sourceId: 301,
         journal: $scope.frenchJournal
       };
 
@@ -87,26 +88,32 @@ angular.module('otaClientApp')
               //var listDiv = document.getElementById("topFive");
               //listDiv.innerHTML = "";
 
-              $scope.articleDescriptions = [];
+              if (journalElems.sourceId === -1) {
+                $scope.articleDescriptions = [];
 
-              data.forEach(function (val) {
-                console.log(val);
+                data.forEach(function (val) {
+                  console.log(val);
 
-                if (current < max) {
-                  if (val.body) {
-                    $scope.articleDescriptions.push(val.description);
-                    current++;
+                  if (current < max) {
+                    if (val.body) {
+                      $scope.articleDescriptions.push(val.description);
+                      current++;
+                    }
+                    else {
+                      console.log("article has no body");
+                    }
                   }
-                  else {
-                    console.log("article has no body");
-                  }
-                }
-              });
+                });
+              }
 
-              //$scope.title = data[0].title;
-              journalElems.journal.title = data[0].title;
-              //$scope.body = data[0].body;
-              journalElems.journal.body = data[0].body;
+              if (data[0] && data[0].title && data[0].body) {
+                journalElems.journal.title = data[0].title;
+                journalElems.journal.body = data[0].body;
+              }
+              else {
+                journalElems.journal.title = "";
+                journalElems.journal.body = "";
+              }
 
             }).error(function(data, status, headers, config) {
             });
