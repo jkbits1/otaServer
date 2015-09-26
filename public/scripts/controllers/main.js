@@ -15,56 +15,45 @@ angular.module('otaClientApp')
       'Karma'
     ];
 
-    //$scope.searchTerm = "europe%20debate";
+    //initial defaults
     $scope.searchTerm = "europe debate";
-
     $scope.articleDescriptions = [];
 
-    //$http.get('' + progIdUriSegment)
     $http.get('/mainArticle')
       .success(function (data, status, headers, config) {
-
         var max = 5;
         var current = 0;
 
-        //var parsed = JSON.parse(data);
-
-        //parsed.forEach(function (val) {
         data.forEach(function (val) {
           console.log(val);
 
           if (current < max) {
-            $scope.articleDescriptions.push(val.description);
-            current++;
+            if (val.body) {
+              $scope.articleDescriptions.push(val.description);
+              current++;
+            }
+            else {
+              console.log("article has no body");
+            }
           }
         });
 
-        //$scope.blather2 = data.files;
-        //$scope.blather2 = data;
-        //$scope.blather2 = parsed;
-        $scope.blather2 = data[0];
+        //$scope.blather2 = data[0];
 
-        //var monthYears = [];
-
-
-        //var parser = new fileParser($scope.files[0].fileName);
-
-        //$scope.fileName = $scope.getProgramName();
-        //$scope.summary = $scope.getProgrammeSummary();
+        $scope.title = data[0].title;
+        $scope.body = data[0].body;
 
       }).error(function(data, status, headers, config) {
 
       });
 
-    $scope.blather = "test123";
+    //$scope.blather = "test123";
 
     $scope.searchJuicer = function () {
-
       var encodedSearchTerm = encodeURIComponent($scope.searchTerm);
 
       $http.get('/mainArticleSearch/' + encodedSearchTerm)
         .success(function (data, status, headers, config) {
-
           var max = 5;
           var current = 0;
 
@@ -73,9 +62,6 @@ angular.module('otaClientApp')
 
           $scope.articleDescriptions = [];
 
-          //var parsed = JSON.parse(data);
-
-          //parsed.forEach(function (val) {
           data.forEach(function (val) {
             console.log(val);
 
@@ -85,23 +71,9 @@ angular.module('otaClientApp')
             }
           });
 
-          //$scope.blather2 = data.files;
-          //$scope.blather2 = data;
-          //$scope.blather2 = parsed;
-          $scope.blather2 = data[0];
-
-          //var monthYears = [];
-
-
-          //var parser = new fileParser($scope.files[0].fileName);
-
-          //$scope.fileName = $scope.getProgramName();
-          //$scope.summary = $scope.getProgrammeSummary();
+          //$scope.blather2 = data[0];
 
         }).error(function(data, status, headers, config) {
-
-        });
-
+      });
     };
-
   }]);
