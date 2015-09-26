@@ -5,14 +5,19 @@
 </div>
 
 <div class="row">
-  <form>
+  <br/>
+  <!--<form>-->
+  <form class="form-inline">
     <div class="form-group">
       <label for="searchField"></label>
-      <input type="text" id="searchField" ng-model="searchTerm" />
+      <input type="text" class="form-control" id="searchField" ng-model="searchTerm" />
+      <!--<input type="submit" id="searchField" ng-model="searchTerm" />-->
+      <!--<input type="submit" style="display: none" />-->
     </div>
     <div class="form-group">
       <a class="btn btn-default" href=""
          ng-click="searchJuicer()">Search</a>
+      <!--<button type="submit" ng-click="searchJuicer()" value="default action">Search</button>-->
     </div>
   </form>
 </div>
@@ -37,28 +42,33 @@
 </div>
 
 <div class="row marketing">
-  <h3>Belgium Chronicle</h3>
-  <p>
-    <h4><em>{{belgiumJournal.title}}
+  <div class="col-xs-12 col-md-4">
+    <h3>Belgium Chronicle</h3>
+    <p>
+      <h4><em>{{belgiumJournal.title}}
+          </em>
+      </h4>
+      <p>{{belgiumJournal.body}}</p>
+    </p>
+  </div>
+
+  <div class="col-xs-12 col-md-4">
+    <h3>French News</h3>
+    <p>
+    <h4><em>{{frenchJournal.title}}
         </em>
     </h4>
-    <p>{{belgiumJournal.body}}</p>
-  </p>
+    <p>{{frenchJournal.body}}</p>
+    </p>
+  </div>
 
-  <h3>French News</h3>
-  <p>
-  <h4><em>{{frenchJournal.title}}
-      </em>
-  </h4>
-  <p>{{frenchJournal.body}}</p>
-  </p>
-
-  <h3>Portuguese Times</h3>
-  <p>
-  <h4><em>{{portugueseJournal.title}}
-      </em>
-  </h4>
-  <p>{{portugueseJournal.body}}</p>
-  </p>
-
+  <div class="col-xs-12 col-md-4">
+    <h3>Portuguese Times</h3>
+    <p>
+    <h4><em>{{portugueseJournal.title}}
+        </em>
+    </h4>
+    <p>{{portugueseJournal.body}}</p>
+    </p>
+  </div>
 </div>
